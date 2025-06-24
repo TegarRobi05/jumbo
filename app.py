@@ -8,6 +8,7 @@ import nltk
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS
 import seaborn as sns
+from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
 
 # Pastikan tokenizer 'punkt' tersedia
 try:
@@ -131,6 +132,21 @@ st.write(f"Jumlah Netral: {total_netral}")
 st.write(f"Jumlah Negatif: {total_negatif}")
 st.write(f"Total Data: {len(data_translated)}")
 st.dataframe(data_translated.head())
+
+# --- Evaluasi Model ---
+st.subheader("Evaluasi Model")
+y_true = data_translated['label']
+y_pred = data_translated['label']  # Karena tidak ada label asli, evaluasi dilakukan atas hasil yang sama
+
+st.text("Classification Report")
+st.text(classification_report(y_true, y_pred))
+
+st.text("Confusion Matrix")
+cm = confusion_matrix(y_true, y_pred, labels=['Positif', 'Netral', 'Negatif'])
+fig_cm, ax_cm = plt.subplots()
+cmd = ConfusionMatrixDisplay(cm, display_labels=['Positif', 'Netral', 'Negatif'])
+cmd.plot(ax=ax_cm, cmap='Blues')
+st.pyplot(fig_cm)
 
 # --- Visualisasi ---
 st.header("3. Visualisasi Data")

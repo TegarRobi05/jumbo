@@ -1,10 +1,9 @@
-pandas
 streamlit
+pandas
+regex
 Sastrawi
 textblob
-nltk
-translate
-wordcloud
 matplotlib
 seaborn
-regex
+wordcloud
+nltk

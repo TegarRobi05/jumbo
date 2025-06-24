@@ -8,11 +8,12 @@ import nltk
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS
 import seaborn as sns
+import nltk
 
 # Download NLTK punkt tokenizer (if not already downloaded)
 try:
     nltk.data.find('tokenizers/punkt')
-except nltk.downloader.DownloadError:
+except LookupError:
     nltk.download('punkt')
 
 st.set_page_config(layout="wide")
